@@ -102,9 +102,9 @@
     flex-direction: column;
     justify-content: center;
   }
-  /* .headline-about-text {
-    margin: 10%;
-  } */
+  .headline-about-text {
+    margin: 10% 10% 10% 5%;
+  }
 
   .about-text {
     /* width: 100%; */
