@@ -48,10 +48,11 @@
   
   .navbar {
     background-color: #D6BD97;
+    border-bottom: #000 solid 2px;
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 2fr 3fr;
     align-items: center;
-    height: 65px;
+    height: 56px;
     overflow: hidden;
   }
   
@@ -72,54 +73,93 @@
   .navbar ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(6,1fr);
+    grid-template-columns: repeat(4,1fr);
     justify-self: end;
     
   }
   
   .nav-item a {
     color: black;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     font-weight: 400;
     text-decoration: none;
     transition: color 0.3s ease-out;
   }
+
+/* Target the mini-audit-button */
+  .nav-item.mini-audit-button a {
+    background-color: #C2F4AA; /* Background color when not hovered */
+    color: #000; /* Text color when not hovered */
+    border: 4px solid transparent; /* Add a transparent border initially */
+    padding: 2px;
+    border-radius: 5px;
+    transition: border 0.3s ease, color 0.3s ease; /* Transition for border and text color */
+  }
+
+/* Style the button on hover */
+  .nav-item.mini-audit-button a:hover {
+    background-color: transparent; /* Background becomes transparent on hover */
+    color: #fff; /* Text color turns white on hover */
+    border-color: #C2F4AA; /* Border color becomes #C2F4AA on hover */
+  }
+
+
   
   .nav-item a:hover {
-    color: #3498db;
+    color: #C2F4AA;
   }
   
   /* SECTIONS */
   
   .headline .about {
     width: 100%;
-    height: 17vh;
-    min-height: 25px;
-    background-color: #D6BD97;
-    opacity: 34%;
+    height: 37vh;
+    min-height: 35%;
+    /* background-color: #D6BD97; */
     background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
   .headline-about-text {
-    margin: 10% 10% 10% 5%;
+    margin: 0; /* Remove existing margins */
+    background: url(images/Banner-images/1.png);
+    background-size: cover;
+    padding: 10% 10% 12% 5%; /* Add padding equivalent to the margins you want */
+    box-sizing: border-box; /* Include padding in the element's width */
   }
 
   .about-text {
-    /* width: 100%; */
-    background-color: #C2F4AA;
-    background-color: 70%;
+    /* Other styles here */
+    position: relative;
+    background-color: #C2F4AA; /* Background color without opacity */
+    border-top: #C2F4AA solid 17px;
     border-bottom: #000 solid 7px;
-
   }
-
+  
+  .about-text::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/Banner-images/11.png'); /* Background image URL */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    opacity: 0.3; /* Set the opacity to 30% for the background image */
+    z-index: 0; /* Adjust the z-index to 0 or remove it */
+  }
+  
+  
+  
   .about-text-body {
-    margin-top: 20%;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-top: 0%;
+    margin-left: 17%;
+    margin-right: 15%;
     margin-bottom: 0%;
-    padding: 10%;
+    padding: 7%;
     display: flex;
     justify-content: left;
     text-align: start;
@@ -129,76 +169,44 @@
     width: 100%;
     height: auto;
     background-color: #D6BD97;
-    display: flex;
+    /* display: flex;
     padding: 50px 20px;
-    justify-content: space-around;
+    justify-content: space-around; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 3px;
+    grid-row: 5px;
+    border-bottom: #000 solid 7px;
   }
   
   .feature-container {
     flex-basis: 30%;
     margin-top: 10px;
+    padding: 25px;
   }
   
+  .features-sub-head {
+    font-size: 1.2rem;
+  }
+
   .feature-container p {
     color: #000;
     text-align: center;
     line-height: 1.4;
     margin-bottom: 15px;
+    margin-top: 0px;
+
   }
   
   .feature-container img {
     width: 100%;
     margin-bottom: 15px;
+    border-radius: 9px;
+    border-bottom: #C2F4AA solid 7px;
   }
-  
-  /* SEARCH FUNCTION */
-  
-  #search-icon {
-    font-size: 0.9rem;
-    margin-top: 3px;
-    margin-left: 15px;
-    transition: color 0.3s ease-out;
-  }
-  
-  #search-icon:hover {
-    color: #3498db;
-    cursor: pointer;
-  }
-  
-  .search {
-    transform: translate(-35%);
-    -webkit-transform: translate(-35%);
-    transition: transform 0.7s ease-in-out;
-    color: #3498db;
-  }
-  
-  .no-search {
-    transform: translate(0);
-    transition: transform 0.7s ease-in-out;
-  }
-  
-  .search-input {
-    position: absolute;
-    top: -4px;
-    right: -125px;
-    opacity: 0;
-    z-index: -1;
-    transition: opacity 0.6s ease;
-  }
-  
-  .search-active {
-    opacity: 1;
-    z-index: 0;
-  }
-  
-  input {
-    border: 0;
-    border-left: 1px solid #ccc;
-    border-radius: 0; /* FOR SAFARI */
-    outline: 0;
-    padding: 5px;
-  }
-  
+
+ 
   /* MOBILE MENU & ANIMATION */
   
   .menu-toggle .bar{
@@ -283,6 +291,7 @@
   
   @media only screen and (max-width: 720px) { 
     .features {
+      display: flex;
       flex-direction: column;
       padding: 50px;
     }
@@ -341,7 +350,7 @@
     /* SECTIONS */
     
     .headline {
-      height: 20vh;
+      height: 29vh;
     }
       
     .feature-container p {
@@ -367,3 +376,217 @@
    }
     
   }
+
+/* Footer Styles */
+footer {
+  border-top: #000 solid 2px;
+  background-image: url(images/Banner-images/7.png);
+  padding-top: 70px;
+  padding-bottom: 37px;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Contact Form Styles */
+.contact-form {
+  /* background-color: #D6BD97; */
+  padding: 20px;
+  border-radius: 5px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  text-align: left;
+}
+
+.contact-form h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.contact-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.contact-form button {
+  background-color: #C2F4AA;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.contact-form button:hover {
+  background-color: #AEEF9C;
+}
+
+/* Copyright Footer Styles */
+.footer-bar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Checkbox Styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+label input[type="checkbox"] {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+
+.footer-bar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-bar a:hover {
+  text-decoration: underline;
+}
+
+
+  /*About-us*/
+
+/* Centered and Responsive About Us Section */
+.about-us {
+  margin: 0; /* Remove existing margins */
+  background-color: #C2F4AA;
+  background-size: cover;
+  padding: 4% 4% 7% 2%; 
+  box-sizing: border-box; /* Include padding in the element's width */
+  text-align: center; /* Center align text */
+  border-bottom: #000 solid 2px;
+}
+
+.about-us-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-us-head {
+  font-size: 2rem; /* Adjust font size as needed */
+  margin-bottom: 2%;
+}
+
+.about-us-body {
+  font-size: 1.2rem; /* Adjust font size as needed */
+  text-align: left; /* Center align text */
+  margin-bottom: 1%;
+}
+
+/* Compelling Copy Section Styles */
+.compelling-copy {
+  background-color: #D9D9D9; /* Choose your desired background color */
+  padding: 5%; /* Adjust padding as needed */
+  text-align: center;
+}
+
+.copy-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.copy-heading {
+  font-size: 2rem; /* Adjust font size as needed */
+  color: #000; /* Choose your desired text color */
+  margin-bottom: 20px; /* Adjust spacing as needed */
+}
+
+.copy-paragraph {
+  font-size: 1.2rem; /* Adjust font size as needed */
+  color: #333; /* Choose your desired text color */
+  margin: 3%; /* Adjust spacing as needed */
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: #C2F4AA; /* Choose your desired button color */
+  color: #000; /* Choose your desired button text color */
+  font-size: 1.2rem; /* Adjust font size as needed */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border-radius: 5px; /* Adjust border radius as needed */
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #AEEF9C; /* Choose your desired hover color */
+}
+
+/* Image Styles for Mobile */
+@media (max-width: 720px) {
+  .about-us img {
+    max-width: 100%; /* Make the image responsive and shrink to fit the screen */
+    height: auto; /* Preserve aspect ratio */
+  }
+}
+
+
+
+.footer-bar {
+  background-color: #000;
+}
+
+.features-sub-head {
+  margin-top: 10px;
+}
+/* 
+  .about-us-container {
+    flex-basis: 30%;
+    margin-top: 10px;
+    padding: 25px;
+  }
+  
+  .about-us-container p {
+    color: #000;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    margin-top: 0px;
+
+  }
+  .about-us-container img {
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 9px;
+    border-bottom: #C2F4AA solid 7px;
+  }
+
+  .about-us {
+    width: 100%;
+    height: auto;
+    /* background-color: #D6BD97; */
+    /* display: flex;
+    padding: 50px 20px;
+    justify-content: space-around; */
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 3px;
+    grid-row: 5px;
+  } */ 
